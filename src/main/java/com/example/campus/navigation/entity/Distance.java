@@ -4,7 +4,7 @@ import lombok.Data;
 
 import java.sql.Date;
 @Data
-public class distance {
+public class Distance {
     private int pk_id;
     private String primary_address;
     private String target_address;

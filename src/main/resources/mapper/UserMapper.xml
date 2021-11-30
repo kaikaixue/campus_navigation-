@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.campus.navigation.mapper.UserMapper">
+
+    <select id="find" resultType="com.example.campus.navigation.domain.DO.UserDO" >
+        select name,age,avatar,grade,department,phone,dormitory from t_user
+        where pk_id=#{id}
+
+    </select>
+
+    <update id="modify" parameterType="com.example.campus.navigation.domain.dto.ModifyUserDTO">
+    update t_user set  name=#{name},age=#{age},avatar=#{avatar},grade=#{grade},
+        department=#{department},phone=#{phone},dormitory=#{dormitory}  where pk_id=#{id}
+
+    </update>
+
+    <select id="findId" resultType="int" parameterType="String">
+    select pk_id from t_user where name = #{name}
+    </select>
+
+
+
+
+
+
+</mapper>
