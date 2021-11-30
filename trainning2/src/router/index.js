@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-06-04 14:58:24
- * @LastEditTime: 2021-11-29 20:32:54
+ * @LastEditTime: 2021-11-30 10:07:30
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \demo\src\router\index.js
@@ -13,10 +13,16 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 const routes = [{
-        path: '/',
-        name: 'My',
+        path: '/login',
+        name: 'Login',
         component: () =>
             import ( /* webpackChunkName: "about" */ '../views/login/Login.vue')
+    },
+    {
+        path: '/',
+        name: 'Index',
+        component: () =>
+            import ( /* webpackChunkName: "about" */ '../views/page/index.vue')
     },
     {
         path: '/about',

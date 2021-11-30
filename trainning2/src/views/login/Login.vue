@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-05-09 11:39:58
- * @LastEditTime: 2021-11-29 21:44:48
+ * @LastEditTime: 2021-11-30 09:57:37
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \demo\src\views\My.vue
@@ -21,10 +21,17 @@
     </v-dialog>
 
     <div class="framework">
-      <div class="img"></div>
+      <div class="img">
+        <div class="time">
+          {{nowDateTime}}
+        </div>
+         <div class="crest">
+          <img src="../../assets/image/crest.jpg" alt="" style="width: 100%; height: 100%">
+        </div>
+      </div>
       <div class="card">
         <div class="top">
-          <p style="margin-top: 16px;color:white ">校园导航后台登录</p>
+          <p style="margin-top: 16px;color:black ">校园导航后台</p>
         </div>
         <div class="import" style="">
           <v-form>
@@ -34,7 +41,7 @@
               v-model="account"
             ></v-text-field>
           </v-form>
-          <v-form>
+          <v-form style="margin-top:20px">
             <v-text-field
               label="密码"
               type="password"
@@ -43,8 +50,8 @@
           </v-form>
         </div>
         <div class="button">
-          <v-btn rounded color="primary" dark @click="login()">
-            登陆
+         <v-btn class="ma-2" outlined color="indigo">
+      登陆
           </v-btn>
         </div>
       </div>
@@ -62,13 +69,31 @@ export default {
       password: "",
       status: "",
       dialogDelete: false,
+      nowDateTime:"",
     };
   },
   methods: {
-    login() {},
+    login() {},currentTime(){
+    
+    setInterval(this.getTime,500)
   },
-
-  created() {},
+  getTime(){
+    
+    var _this=this;
+    let year=new Date().getFullYear();
+    let month=new Date().getMonth();
+    let date=new Date().getDate();
+    let hour=new Date().getHours();
+    let minute=new Date().getMinutes()<10 ? '0'+ new Date().getMinutes():new Date().getMinutes();
+    let second=new Date().getSeconds()<10 ? '0'+ new Date().getSeconds():new Date().getSeconds();
+    this.nowDateTime=year+"-"+month+"-"+date+" "+hour+":"+minute+":"+second;
+    
+  }
+  }, 
+  created() {
+   
+    this.currentTime();
+  }
 };
 </script>
 
@@ -84,17 +109,23 @@ export default {
 }
 
 .top {
+  margin-top: 10%;
   width: 100%;
   height: 20%;
 }
 
 .import {
-  width: 100%;
-  height: 50%;
+  width: 70%;
+  height: 40%;
   display: flex;
   justify-content: center;
   align-items: center;
   display: inherit;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 .password {
@@ -108,10 +139,10 @@ export default {
   display: flex;
   justify-content: center;
   width: 100%;
-  height: 15%;
+  height: 25%;
 }
 .v-btn {
-  width: 50%;
+  width: 57%;
   height: 15%;
   display: flex;
   justify-content: center;
@@ -128,12 +159,11 @@ export default {
 }
 
 .card {
-  background-color: rgba(255, 200, 200, 0.1);
+  background-color:#fff;
   width: 50%;
   height: 100%;
   position: absolute;
   right: 0%;
-  
   /* opacity: 0.5; */
   /* 透明度 */
   font-size: 35px;
@@ -149,8 +179,8 @@ export default {
   right: 0;
   font-size: 35px;
   display: inline-block;
-  width: 70%;
-  height: 50%;
+  width: 65%;
+  height: 70%;
 
 }
 .img {
@@ -158,6 +188,25 @@ export default {
   position: absolute;
   width: 50%;
   height: 100%;
-  
+  background-color:#409eff;
+}
+.time{
+  width: 100%;
+  height: 15%;
+  color:#fff;
+  font-size: 20px;
+  margin-left:15px ;
+  margin-top: 10px;
+}
+.crest{
+  width: 50%;
+  height: 55%;
+  background: #049ec4;
+  margin: auto;
+  top: 20;
+  bottom: 0;
+  left: 0;
+  right: 0;
+ 
 }
 </style>
