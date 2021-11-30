@@ -1,0 +1,15 @@
+
+# 数据库连接配置
+Spring:
+  datasource:
+    name: training
+    url: jdbc:mysql://10.20.56.115:3306/campus_navigation?serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: 107107
+    driver-class-name: com.mysql.cj.jdbc.Driver
+mybatis:
+  mapper-locations: classpath:mapper/*.xml # 配置映射文件
+  type-aliases-package: com.example.campus.navigation.entity
+
+
+

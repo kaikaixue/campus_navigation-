@@ -1,4 +1,4 @@
-package com.example.campus_navigation.result;
+package com.example.campus.navigation.result;
 
 /**
  *  Created by D丶Cheng on 2018/7/4.

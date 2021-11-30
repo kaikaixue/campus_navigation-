@@ -1,4 +1,4 @@
-package com.example.campus_navigation.vo;
+package com.example.campus.navigation.vo;
 
 import lombok.Data;
 

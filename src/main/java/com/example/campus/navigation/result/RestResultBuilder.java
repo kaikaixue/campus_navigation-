@@ -1,4 +1,4 @@
-package com.example.campus_navigation.result;
+package com.example.campus.navigation.result;
 
 
 import java.util.HashMap;

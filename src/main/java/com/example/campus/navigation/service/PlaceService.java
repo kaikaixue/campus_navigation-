@@ -1,6 +1,6 @@
-package com.example.campus_navigation.service;
+package com.example.campus.navigation.service;
 
-import com.example.campus_navigation.result.RestResult;
+import com.example.campus.navigation.result.RestResult;
 
 public interface PlaceService {
     /**

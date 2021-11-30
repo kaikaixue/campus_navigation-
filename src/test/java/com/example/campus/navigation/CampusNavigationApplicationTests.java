@@ -1,4 +1,4 @@
-package com.example.campus_navigation;
+package com.example.campus.navigation;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

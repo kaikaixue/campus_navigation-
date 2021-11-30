@@ -1,4 +1,4 @@
-package com.example.campus_navigation.entity;
+package com.example.campus.navigation.entity;
 
 import lombok.Data;
 
