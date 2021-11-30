@@ -1,14 +1,16 @@
 package com.example.campus.navigation.mapper;
 
-import com.example.campus.navigation.entity.Place;
-import com.example.campus.navigation.vo.ListVO;
+import com.example.campus.navigation.domain.DO.ListDO;
+import com.example.campus.navigation.domain.DO.PlaceDetailDO;
+import com.example.campus.navigation.domain.dto.PlaceDetailDTO;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
 
 
 import java.util.List;
 
 @Mapper
 public interface PlaceMapper {
-    List<ListVO> findAll();
+    List<ListDO> findAll();
+
+   PlaceDetailDO  showDetail(PlaceDetailDTO detailDTO);
 }

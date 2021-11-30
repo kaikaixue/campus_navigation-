@@ -1,9 +1,9 @@
-package com.example.campus.navigation.vo;
+package com.example.campus.navigation.domain.DO;
 
 import lombok.Data;
 
 @Data
-public class ListVO {
+public class ListDO {
     private String picture;
     private String name;
 }
