@@ -1,7 +1,7 @@
 <!--pages/index/index.wxml-->
 <view class="total">
   <view class="top">
-    <input type="text" placeholder="   搜地点、查路线" class="input-search iconfont icon icon-sousuoxiao" disabled />
+    <input type="text" placeholder="   搜地点、查路线" class="input-search iconfont icon icon-sousuoxiao" disabled bindtap="goToSearch"/>
     <view class="map-main">
       <map id="map" class="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="{{scale}}"
         show-location="true"></map>
@@ -16,7 +16,7 @@
     </view>
     <scroll-view class="total-place" scroll-y="true">
       <view class="item-place"  wx:for="{{placeList}}" wx:key="index">
-        <image src="{{item.imgUrl}}" class="img-place" />
+        <image src="{{item.picture}}" class="img-place" />
         <view class="item-right">
           <text class="text-name">{{item.name}}</text>
           <image src="../../asset/icon/search.png" class="img-nav"></image>

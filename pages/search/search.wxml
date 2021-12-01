@@ -1,0 +1,52 @@
+<!--pages/search/search.wxml-->
+<view class="main">
+  <view class="top">
+    <view class="search-content">
+      <view class="search-left">
+        <view class="search">
+          <image src="../../asset/icon/point-green.png" class="icon-point"></image>
+          <input type="text" class="search-input" disabled bindtap="showSelect" data-flag="0" value="{{primaryPlace.name}}" />
+        </view>
+        <view class="search">
+          <image src="../../asset/icon/point-red.png" class="icon-point"></image>
+          <input type="text" class="search-input" disabled value="{{targetPlace.name}}" bindtap="showSelect" data-flag="1"/>
+        </view>
+      </view>
+      <image src="../../asset/icon/road.png" class="icon-road"></image>
+    </view>
+  </view>
+  <view class="bottom">
+    <scroll-view class="scroll">
+      <view wx:for="{{pathList}}" wx:key="index" class="item-path">
+        <view class="item-head">
+          <text class="text-time">{{item.time}}分钟</text>
+          <image src="../../asset/icon/foot.png" class="item-image"></image>
+          <text class="text-distance">{{item.distance}}公里</text>
+        </view>
+        <view class="item-content">
+          <view wx:for="{{item.placeList}}" wx:for-item="place" wx:for-index="idx" style="margin-top: -10rpx">
+            <view wx:if="{{(idx+1) < item.placeList.length}}" class="place">
+              <view class="text-place">{{place}}</view>
+              <image src="../../asset/icon/right.png" class="icon-right"></image>
+            </view>
+            <view wx:else class="place">
+              <view class="text-place">{{place}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+  <!-- 选择框 -->
+  <view id="select" class="select-content" wx:if="{{isShow}}">
+    <view class="select-title">请选择地点</view>
+    <scroll-view class="scroll-select" scroll-y="true" enhanced="true" show-scrollbar="false">
+      <view wx:for="{{placeList}}" bindtap="selectPlace" data-flag="{{flag}}" data-item="{{item}}" class="item-select">
+        <image src="../../asset/icon/place.png" class="icon-place"></image>
+        <text class="text-placeName">{{item.name}}</text>
+      </view>
+    </scroll-view>
+  </view>
+  <!-- 遮罩层 -->
+  <view class="mark" wx:if="{{isShow}}" bindtap="hiddenSelect"></view>
+</view>
