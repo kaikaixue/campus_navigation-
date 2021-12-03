@@ -5,7 +5,7 @@
 <mapper namespace="com.example.campus.navigation.mapper.PlaceMapper">
 
     <select id="findAll" resultType="com.example.campus.navigation.domain.DO.ListDO" >
-        select pk_id,name,picture,latitude,longitude from t_place
+        select pk_id,name,detail,picture,latitude,longitude from t_place
 
     </select>
 
