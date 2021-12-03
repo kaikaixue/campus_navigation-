@@ -3,7 +3,8 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.campus.navigation.mapper.DistanceMapper">
-    <select id="findAll" resultType="com.example.campus.navigation.domain.DO.DistanceDO" >
-       select
-    </select>
+<!--    <select id="Search" parameterType="com.example.campus.navigation.domain.dto.DistanceDto"-->
+<!--            resultType="com.example.campus.navigation.domain.DO.DistanceDO" >-->
+<!--    select value from t_distance   where primary_address = #{primaryAddress} AND target_address = #{targetAddress}-->
+<!--    </select>-->
 </mapper>

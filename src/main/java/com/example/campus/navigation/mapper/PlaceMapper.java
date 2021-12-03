@@ -10,7 +10,9 @@ import java.util.List;
 
 @Mapper
 public interface PlaceMapper {
+
     List<ListDO> findAll();
 
    PlaceDetailDO  showDetail(PlaceDetailDTO detailDTO);
+   
 }
