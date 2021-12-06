@@ -24,5 +24,10 @@ select name,detail,picture from t_place where pk_id =#{id}
 
 
     </select>
+    <select id="getIdName" resultType="com.example.campus.navigation.domain.DO.PlaceIdName">
+        select pk_id as id,name from t_place
+
+
+    </select>
 
 </mapper>

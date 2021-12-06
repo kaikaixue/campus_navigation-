@@ -1,10 +1,9 @@
 package com.example.campus.navigation.mapper;
 
-import com.example.campus.navigation.domain.DO.DistanceDO;
 import com.example.campus.navigation.domain.DO.ListDO;
 import com.example.campus.navigation.domain.DO.PlaceDetailDO;
+import com.example.campus.navigation.domain.DO.PlaceIdName;
 import com.example.campus.navigation.domain.dto.PlaceDetailDTO;
-import com.example.campus.navigation.domain.vo.PlaceDetailVO;
 import org.apache.ibatis.annotations.Mapper;
 
 
@@ -21,6 +20,6 @@ public interface PlaceMapper {
 
    String findName(Integer id);
 
-
+   List<PlaceIdName> getIdName();
    
 }

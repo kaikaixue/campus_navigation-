@@ -13,4 +13,7 @@ public interface DistanceMapper {
 List<DistanceDO> Search(DistanceDto distanceDto);
 
 
+List<DistanceDO> getPTValue();
+
+
 }

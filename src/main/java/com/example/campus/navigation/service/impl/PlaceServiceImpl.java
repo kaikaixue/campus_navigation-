@@ -1,6 +1,7 @@
 package com.example.campus.navigation.service.impl;
 
 import com.example.campus.navigation.domain.DO.PlaceDetailDO;
+import com.example.campus.navigation.domain.DO.PlaceIdName;
 import com.example.campus.navigation.domain.dto.PlaceDetailDTO;
 import com.example.campus.navigation.domain.vo.PlaceDetailVO;
 import com.example.campus.navigation.mapper.PlaceMapper;
@@ -47,5 +48,6 @@ public class PlaceServiceImpl implements PlaceService {
     public Integer getTotal() {
         return placeMapper.getTotal();
     }
+
 
 }
