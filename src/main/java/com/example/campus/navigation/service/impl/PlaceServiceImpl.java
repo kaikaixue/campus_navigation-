@@ -43,4 +43,9 @@ public class PlaceServiceImpl implements PlaceService {
 
     }
 
+    @Override
+    public Integer getTotal() {
+        return placeMapper.getTotal();
+    }
+
 }

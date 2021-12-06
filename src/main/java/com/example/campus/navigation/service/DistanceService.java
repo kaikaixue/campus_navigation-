@@ -1,5 +1,6 @@
 package com.example.campus.navigation.service;
 
+import com.example.campus.navigation.domain.DO.DistanceDO;
 import com.example.campus.navigation.domain.dto.DistanceDto;
 import com.example.campus.navigation.domain.vo.DistanceSearchVO;
 

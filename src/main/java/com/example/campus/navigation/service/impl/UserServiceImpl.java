@@ -5,9 +5,11 @@ import com.example.campus.navigation.domain.dto.ModifyUserDTO;
 import com.example.campus.navigation.domain.dto.UserDTO;
 import com.example.campus.navigation.mapper.UserMapper;
 import com.example.campus.navigation.service.UserService;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 
+@Service
 public class UserServiceImpl implements UserService {
     @Resource
     UserMapper userMapper;

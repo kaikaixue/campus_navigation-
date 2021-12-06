@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class ListDO {
-    private int pk_id;
+    private Integer pkId;
     private String picture;
     private String name;
     private String detail;

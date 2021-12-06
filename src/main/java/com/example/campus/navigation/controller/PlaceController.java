@@ -25,5 +25,8 @@ public class PlaceController {
         return new RestResultBuilder<>().success(placeService.getDetail(detailDTO));
     }
 
-
+    @PostMapping("/getTotal")
+    public Integer getTotal () {
+        return placeService.getTotal();
+    }
 }

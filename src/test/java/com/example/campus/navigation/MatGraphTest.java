@@ -1,6 +1,85 @@
-package com.example.campus.navigation.service;
+package com.example.campus.navigation;
 
-public class GraphTools {
+import com.example.campus.navigation.service.impl.PlaceServiceImpl;
+import org.springframework.boot.test.context.SpringBootTest;
+
+class MatGraphClass {
+
+    final int MAXV=10;
+    final int INF = 0x3f3f3f3f;
+    int[][] edges;
+    int n, e;//n是顶点数，e是边数
+    String[] vexs;//存放顶点信息
+
+    public MatGraphClass() {
+        edges = new int[MAXV][MAXV];
+        vexs = new String[MAXV];
+        this.n=0;
+        this.e=0;
+    }
+    public void insertEdges(int v1,int v2,int value) {
+        edges[v1][v2] = value;
+        edges[v2][v1] = value;
+        this.e++;
+    }
+
+
+    public void CreateMatGraph(int[][] a, int n, int e) {
+        this.n = n;
+        this.e = e;
+        for (int i = 0; i < n; i++) {
+            edges[i] = new int[n];
+            System.arraycopy(a[i], 0, edges[i], 0, n);
+        }
+    }
+
+    public void DispMatGraph() {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (edges[i][j] == INF) {
+                    System.out.printf("%4s", "∞");
+                } else {
+                    System.out.printf("%4d", edges[i][j]);
+                }
+            }
+            System.out.println();
+        }
+    }
+
+}
+
+
+class Test {
+    public static void main(String[] args) {
+//        final int N = new PlaceServiceImpl().getPlace().getTotal();//获取数据库中一共有多少个地址，即结点数
+        int INF = 0x3f3f3f3f;
+        int[][] a = {{INF, 4, 3, INF, INF,INF,INF,INF},
+                {4, INF, 5, 5, 9,INF,INF,INF},
+                {3, 5, INF, 5, INF,INF,INF,5},
+                {INF, 5, 5, INF, 7,6,5,4},
+                {INF, 9, INF, 7, INF,INF,INF,INF},
+                {INF,INF,INF,6,3,INF,2,INF},
+                {INF,INF,INF,5,INF,2,INF,6},
+                {INF,INF,5,4,INF,INF,6,INF}};
+
+        MatGraphClass ma = new MatGraphClass();
+
+//        ma.insertEdges(0,1,2);
+//        ma.insertEdges(0,3,3);
+//        ma.insertEdges(1,2,2);
+//        ma.insertEdges(1,3,1);
+//        ma.insertEdges(3,4,4);
+
+        ma.CreateMatGraph(a, 8, 14);
+        ma.vexs= new String[]{"a","b","c","d","e","f","g","h"};
+
+        ma.DispMatGraph();
+
+        GraphTools.Dijkstral(ma,3);
+    }
+}
+
+class GraphTools {
     //弗洛伊德算法
     public static void Floyd(MatGraphClass g) {
         int[][] A = new int[g.MAXV][g.MAXV];
@@ -21,6 +100,7 @@ public class GraphTools {
                         path[i][j] = path[k][j];
                     }
         }
+
         Dispath(A, path, g);
     }
 
@@ -30,7 +110,7 @@ public class GraphTools {
         for (int i = 0; i < g.n; i++)
             for (int j = 0; j < g.n; j++) {
                 if (A[i][j] != g.INF && i != j) {
-                    System.out.print("  顶点" + g.vexs[i] + "到" + g.vexs[j] + "的最短路径长度:" +
+                    System.out.print("  顶点" + i + "到" + j + "的最短路径长度:" +
                             A[i][j] + "\t路径:");
                     int k = path[i][j];
                     d = 0;

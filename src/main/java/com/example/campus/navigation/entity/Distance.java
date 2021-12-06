@@ -9,7 +9,7 @@ public class Distance {
     private String primary_address;
     private String target_address;
     private int value;
-    private String is_delete;
+    private Integer is_delete;
     private Date create_time;
     private Date update_time;
 }

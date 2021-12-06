@@ -5,7 +5,7 @@
 <mapper namespace="com.example.campus.navigation.mapper.PlaceMapper">
 
     <select id="findAll" resultType="com.example.campus.navigation.domain.DO.ListDO" >
-        select pk_id,name,detail,picture,latitude,longitude from t_place
+        select pk_id as pkId,name,detail,picture,latitude,longitude from t_place
 
     </select>
 
@@ -15,5 +15,14 @@
 select name,detail,picture from t_place where pk_id =#{id}
 
 </select>
+    <select id="getTotal" resultType="java.lang.Integer">
+        select  count(pk_id)
+        from t_place;
+    </select>
+    <select id="findName" resultType="java.lang.String" parameterType="integer">
+                select name from t_place where pk_id=#{id}
+
+
+    </select>
 
 </mapper>

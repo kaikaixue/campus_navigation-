@@ -14,7 +14,7 @@ public class User {
     private String phone;
     private String dormitory;
     private String marker;
-    private String is_delete;
+    private Integer is_delete;
     private Date update_time;
     private Date create_time;
 }
