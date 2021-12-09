@@ -23,10 +23,12 @@ public class DistanceServiceImpl implements DistanceService, Comparator<Distance
     @Resource
     PlaceMapper placeMapper;
 
-    List<DistanceSearchDO> distanceSearchDOList = new ArrayList<>();
+
 
     @Override
     public DistanceSearchVO Search(DistanceDto distanceDto) {
+
+        List<DistanceSearchDO> distanceSearchDOList = new ArrayList<>();
 
         List<PlaceIdName> placeIdNameList = placeMapper.getIdName();
 
@@ -61,7 +63,6 @@ public class DistanceServiceImpl implements DistanceService, Comparator<Distance
                 if (j == stackList.get(i).size() - 1) {
                     flag = 0;
                 }
-
                 int id1 = (int) stackList.get(i).get(j);
                 int id2 = (int) stackList.get(i).get(j + flag);
 
@@ -207,6 +208,13 @@ class MatGraphClass {
         if (start == end) {
             List<Integer> o = new ArrayList<Integer>(stack);
             lists.add(o);
+           for(int i=1;i<lists.size();i++) {
+
+               if(o.size()>=2&&lists.get(i).retainAll(o)) {
+                   lists.remove(i);
+               }
+           }
+
         }
         for (int i = 1; i < g.n; i++) {
             if (visited[i] == 0 && g.edges[start][i] < g.INF) {
