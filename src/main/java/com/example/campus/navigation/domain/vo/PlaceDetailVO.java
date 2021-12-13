@@ -7,6 +7,8 @@ import java.util.List;
 public class PlaceDetailVO {
     private String name;
     private String detail;
+    private String latitude;
+    private String longitude;
     private String[] pictureList;
 
 

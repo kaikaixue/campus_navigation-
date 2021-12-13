@@ -12,7 +12,7 @@
 
 
 <select id="showDetail" resultType="com.example.campus.navigation.domain.DO.PlaceDetailDO" >
-select name,detail,picture from t_place where pk_id =#{id}
+select name,detail,picture,latitude,longitude from t_place where pk_id =#{id}
 
 </select>
     <select id="getTotal" resultType="java.lang.Integer">
