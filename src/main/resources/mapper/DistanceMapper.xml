@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.campus.navigation.mapper.DistanceMapper">
+    <select id="Search"  resultType="com.example.campus.navigation.domain.DO.DistanceDO" >
+        select primary_address as primaryAddress,target_address as targetAddress,value from t_distance
+    </select>
+    <select id="getPTValue" resultType="com.example.campus.navigation.domain.DO.DistanceDO">
+        select primary_address as primaryAddress,target_address as targetAddress,value from t_distance
+    </select>
+
+</mapper>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.campus.navigation.mapper.PathMapper">
+    <select id="queryPlace"  resultType="com.example.campus.navigation.domain.DO.PlaceIdName" >
+        select pk_id as id,name from t_place where is_delete = 0
+    </select>
+
+    <select id="queryDistance" resultType="com.example.campus.navigation.domain.DO.DistanceNameDo">
+        select p1.name as primaryName, p2.name as targetName, value from t_distance as d join t_place as p1 on d.primary_address = p1.pk_id join t_place as p2 on d.target_address = p2.pk_id;
+    </select>
+</mapper>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.campus.navigation.mapper.PlaceMapper">
+
+    <select id="findAll" resultType="com.example.campus.navigation.domain.DO.ListDO" >
+        select pk_id as pkId,name,detail,picture,latitude,longitude from t_place
+
+    </select>
+
+
+
+<select id="showDetail" resultType="com.example.campus.navigation.domain.DO.PlaceDetailDO" >
+select name,detail,picture from t_place where pk_id =#{id}
+
+</select>
+    <select id="getTotal" resultType="java.lang.Integer">
+        select  count(pk_id)
+        from t_place;
+    </select>
+    <select id="findName" resultType="java.lang.String" parameterType="integer">
+                select name from t_place where pk_id=#{id}
+
+
+    </select>
+    <select id="getIdName" resultType="com.example.campus.navigation.domain.DO.PlaceIdName">
+        select pk_id as id,name from t_place
+
+
+    </select>
+
+</mapper>
