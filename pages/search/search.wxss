@@ -21,6 +21,7 @@ page {
   display: flex;
   justify-content: center;
   background-color: #fff;
+  margin-top: 20rpx;
 }
 
 .search-content {
@@ -72,11 +73,17 @@ page {
   align-items: center;
   justify-content: center;
   background-color: #f6f6f6;
+  flex-direction: column;
 }
 
 .scroll {
   width: 95%;
   height: auto;
+}
+
+.map {
+  width: 100%;
+  height: 700rpx;
 }
 
 .item-path {
@@ -132,7 +139,7 @@ page {
   height: 36rpx;
   padding: 7rpx;
   border-radius: 12rpx;
-  border: 4rpx solid #3377fe;
+  border: 2rpx solid #3377fe;
   color: #3377fe;
   line-height: 36rpx;
   font-family: '宋体';
@@ -148,7 +155,7 @@ page {
 
 .select-content {
   width: 90%;
-  height: 700rpx;
+  height: 800rpx;
   background-color: green;
   position: absolute;
   z-index: 100;
@@ -159,6 +166,7 @@ page {
   border-radius: 10rpx;
   background-color: #fff;
   box-sizing: border-box;
+  opacity: 0;
 }
 
 .select-title {
@@ -166,12 +174,12 @@ page {
   height: 60rpx;
   font-size: 40rpx;
   border-bottom: 1rpx solid gray;
-  color: lightcoral;
+  /* color: lightcoral; */
 }
 
 .scroll-select {
   width: 100%;
-  height: 620rpx;
+  height: 700rpx;
   padding-top: 20rpx;
   box-sizing: border-box;
 }

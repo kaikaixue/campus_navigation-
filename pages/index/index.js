@@ -1,4 +1,8 @@
 // pages/index/index.js
+// 引入SDK核心类
+import QQMapWX from '../../utils/qqmap-wx-jssdk.min.js'
+// var QQMapWX = require('../../utils/qqmap-wx-jssdk.min')
+var qqmapsdk;
 const apiUtil = require('../../utils/ApiUtil.js')
 const api = require('../../constants/HttpConstants')
 Page({
@@ -11,7 +15,11 @@ Page({
     latitude: 32.12169, // 纬度
     scale: 18, // 缩放级别
     total: 10, // 总共地点数
-    placeList: []
+    placeList: [],  // 地点列表
+    placeDetail: {},  // 地点信息 
+    isShowDetail: false,  // 是否显示详情
+    isShowMark: false,  // 是否显示遮罩层
+    animationData: {},  // 弹出动画
   },
 
   /**
@@ -28,8 +36,8 @@ Page({
    */
   requestPlaceList() {
     var that = this
-    console.log(apiUtil)
     apiUtil.request(api.placeList).then((res) => {
+      console.log(res.data)
       that.setData({
         total: res.data.total,
         placeList: res.data.list
@@ -60,9 +68,10 @@ Page({
    * 移动到中心点
    */
   moveTolocation: function () {
+    var that = this
     var mapCtx = wx.createMapContext("map");
     mapCtx.moveToLocation();
-    this.setData({
+    that.setData({
       scale: 18
     })
   },
@@ -74,6 +83,88 @@ Page({
     wx.navigateTo({
       url: '../search/search',
     })
+  },
+
+  /**
+   * 导航
+   */
+  getLocation: function(e) {
+    console.log(e.target.dataset)
+    wx.openLocation({
+      latitude: (Number)(e.target.dataset.item.latitude),//目的地的纬度
+      longitude: (Number)(e.target.dataset.item.longitude),//目的地的经度
+      name: e.target.dataset.item.name, //打开后显示的地址名称
+    })
+     // 使用微信内置地图查看位置
+    //  wx.getLocation({
+    //   type: 'gcj02', //返回可以用于wx.openLocation的经纬度
+    //   success: (res) => {
+    //     wx.openLocation({
+    //       latitude: (Number)(e.target.dataset.item.latitude),//目的地的纬度
+    //       longitude: (Number)(e.target.dataset.item.longitude),//目的地的经度
+    //       name: e.target.dataset.item.name, //打开后显示的地址名称
+    //     })
+    //   }
+    // })
+  },
+
+  /**
+   * 显示详情
+   */
+  showDetail: function(e) {
+    let id = e.target.dataset.id
+    var that = this
+    let data = {
+      id: id
+    }
+    apiUtil.request(api.placeDetail,data).then((res) => {
+      that.setData({
+        placeDetail: res.data,
+      })
+      var animation = wx.createAnimation({
+        delay: 0,
+        duration: 70,
+        timingFunction: 'linear'
+      })
+      this.animation = animation
+      animation.translateY(1000).step()
+      that.setData({
+        animationData: animation.export(),
+        isShowDetail: true,
+        isShowMark: true
+      })
+      setTimeout(function () {
+        animation.translateY(0).step()
+        that.setData({
+          animationData: animation.export()
+        })
+      }.bind(this), 70)
+    })
+  },
+
+  /**
+   * 隐藏详情
+   */
+  hiddenDetail: function () {
+    var that = this
+    var animation = wx.createAnimation({
+      delay: 0,
+      duration: 200,
+      timingFunction: 'linear'
+    })
+    this.animation = animation
+    animation.translateY(1000).step()
+    that.setData({
+      animationData: animation.export()
+    })
+    setTimeout(function () {
+      animation.translateY(0).step()
+      that.setData({
+        animationData: animation.export(),
+        isShowMark: false,
+        isShowDetail: false
+      })
+    }.bind(this), 200)
   },
 
   /**

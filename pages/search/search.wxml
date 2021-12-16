@@ -12,36 +12,38 @@
           <input type="text" class="search-input" disabled value="{{targetPlace.name}}" bindtap="showSelect" data-flag="1"/>
         </view>
       </view>
-      <image src="../../asset/icon/road.png" class="icon-road"></image>
+      <image src="../../asset/icon/road.png" class="icon-road" bindtap="search"></image>
     </view>
   </view>
   <view class="bottom">
     <scroll-view class="scroll">
-      <view wx:for="{{pathList}}" wx:key="index" class="item-path">
+      <view wx:for="{{pathList}}" wx:key="index" class="item-path" bindtap="getLocation">
         <view class="item-head">
           <text class="text-time">{{item.time}}分钟</text>
           <image src="../../asset/icon/foot.png" class="item-image"></image>
-          <text class="text-distance">{{item.distance}}公里</text>
+          <text class="text-distance">{{item.distance}}米</text>
         </view>
         <view class="item-content">
-          <view wx:for="{{item.placeList}}" wx:for-item="place" wx:for-index="idx" style="margin-top: -10rpx">
-            <view wx:if="{{(idx+1) < item.placeList.length}}" class="place">
-              <view class="text-place">{{place}}</view>
+          <view wx:for="{{item.path}}" wx:for-item="place" wx:for-index="idx" style="margin-top: -10rpx" wx:key="index">
+            <view wx:if="{{(idx+1) < item.path.length}}" class="place">
+              <view class="text-place">{{place.name}}</view>
               <image src="../../asset/icon/right.png" class="icon-right"></image>
             </view>
             <view wx:else class="place">
-              <view class="text-place">{{place}}</view>
+              <view class="text-place">{{place.name}}</view>
             </view>
           </view>
         </view>
       </view>
     </scroll-view>
+    <map id="map" class="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="{{scale}}"
+        show-location="true" polyline="{{polyline}}"></map>
   </view>
   <!-- 选择框 -->
-  <view id="select" class="select-content" wx:if="{{isShow}}">
-    <view class="select-title">请选择地点</view>
+  <view id="select" class="select-content" wx:if="{{isShow}}" animation="{{selectAnimation}}">
+    <view class="select-title">选择地点</view>
     <scroll-view class="scroll-select" scroll-y="true" enhanced="true" show-scrollbar="false">
-      <view wx:for="{{placeList}}" bindtap="selectPlace" data-flag="{{flag}}" data-item="{{item}}" class="item-select">
+      <view wx:for="{{placeList}}" bindtap="selectPlace" data-flag="{{flag}}" data-item="{{item}}" class="item-select" wx:key="index">
         <image src="../../asset/icon/place.png" class="icon-place"></image>
         <text class="text-placeName">{{item.name}}</text>
       </view>

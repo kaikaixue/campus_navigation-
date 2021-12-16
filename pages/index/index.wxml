@@ -15,13 +15,28 @@
       共有{{total}}个地点
     </view>
     <scroll-view class="total-place" scroll-y="true">
-      <view class="item-place"  wx:for="{{placeList}}" wx:key="index">
-        <image src="{{item.picture}}" class="img-place" />
-        <view class="item-right">
-          <text class="text-name">{{item.name}}</text>
-          <image src="../../asset/icon/search.png" class="img-nav"></image>
+      <view class="item-place" wx:for="{{placeList}}" wx:key="index">
+        <image src="{{item.picture}}" class="img-place"  bindtap="showDetail" data-id="{{item.pkId}}"/>
+        <view class="item-right" bindtap="showDetail" data-id="{{item.pkId}}">
+          <text class="text-name" bindtap="showDetail" data-id="{{item.pkId}}">{{item.name}}</text>
+          <image src="../../asset/icon/search.png" class="img-nav" bindtap="getLocation" data-item="{{item}}"></image>
         </view>
       </view>
     </scroll-view>
   </view>
+  <!-- 详情面板 -->
+  <view wx:if="{{isShowDetail}}" class="detail-pane" animation="{{animationData}}">
+    <text class="detail-name">{{placeDetail.name}}</text>
+    <scroll-view scroll-x="true" class="detail-scroll">
+      <view wx:for="{{placeDetail.pictureList}}" wx:key="index" class="v-img">
+        <image src="{{item}}" class="detail-img"></image>
+      </view>
+    </scroll-view>
+    <view class="detail-info">
+      {{placeDetail.detail}}
+    </view>
+    <view class="detail-btn" bindtap="getLocation" data-item="{{placeDetail}}">到这去</view>
+  </view>
+  <!-- 遮罩层 -->
+  <view class="mark" wx:if="{{isShowMark}}" bindtap="hiddenDetail"></view>
 </view>

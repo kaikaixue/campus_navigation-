@@ -4,13 +4,14 @@
 
  function request(url, data = {}, method = "POST") {
    return new Promise(function (resolve, reject) {
-     console.log(url)
-     console.log(data)
+    //  console.log(url)
+    //  console.log(data)
      wx.request({
        url: url,
        data: data,
        method: method,
        success: function(res) {
+        //  console.log(res)
          if (res.data.code == 0) {
            resolve(res.data)
          } else {
